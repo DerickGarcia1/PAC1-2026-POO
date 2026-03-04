@@ -1,0 +1,26 @@
+meta {
+  name: Edit
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5272/api/person/1411200100487
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "dni": "1411200100487",
+      "firstName": "juan andrez",
+      "lasttName": "Garza inestroza",
+      "birthDate": "2001-04-02T00:00:00",
+      "gender": "Masculino"
+    }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
