@@ -31,5 +31,12 @@ namespace PersonsApp.Entites
         
         [Column("gender")]
         public string Gender { get; set; }
+
+        [Column("country_id")]
+        [Required()]
+        public string CountryId { get; set; }
+
+        [ForeignKey(nameof(CountryId))]
+        public virtual CountryEntity Country { get; set; }
     }
 }

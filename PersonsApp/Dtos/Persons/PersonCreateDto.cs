@@ -20,5 +20,10 @@ namespace PersonsApp.Dtos.Persons
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public string Gender { get; set; }
+
+        [Display(Name = "Pais")]
+        [Required(ErrorMessage = "El {0} es requerido")]
+        
+        public string CountryId { get; set; }
     }
 }

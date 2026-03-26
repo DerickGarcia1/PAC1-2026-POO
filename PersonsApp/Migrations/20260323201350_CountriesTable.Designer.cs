@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonsApp.DataBase;
 
@@ -10,9 +11,11 @@ using PersonsApp.DataBase;
 namespace PersonsApp.Migrations
 {
     [DbContext(typeof(PersonsDbContext))]
-    partial class PersonsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260323201350_CountriesTable")]
+    partial class CountriesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.3");
@@ -65,7 +68,6 @@ namespace PersonsApp.Migrations
                         .HasColumnName("birth_date");
 
                     b.Property<string>("CountryId")
-                        .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("country_id");
 
@@ -109,25 +111,7 @@ namespace PersonsApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
-
                     b.ToTable("persons");
-                });
-
-            modelBuilder.Entity("PersonsApp.Entites.PersonEntity", b =>
-                {
-                    b.HasOne("PersonsApp.Entites.CountryEntity", "Country")
-                        .WithMany("Persons")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("PersonsApp.Entites.CountryEntity", b =>
-                {
-                    b.Navigation("Persons");
                 });
 #pragma warning restore 612, 618
         }
